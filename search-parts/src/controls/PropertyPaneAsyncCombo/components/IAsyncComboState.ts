@@ -21,4 +21,9 @@ export interface IAsyncComboState {
      * Error message to display if needed
      */
     errorMessage?: string;
+
+    /**
+     * The placeholder to display in the dropwdown
+     */
+    placeholder: string;
 }

@@ -280,9 +280,9 @@ export class SharePointSearchDataSource extends BaseDataSource<ISharePointSearch
                         allowFreeform: true,
                         description: commonStrings.DataSources.SharePointSearch.SelectedPropertiesFieldDescription,
                         label: commonStrings.DataSources.SharePointSearch.SelectedPropertiesFieldLabel,
-                        placeholder: commonStrings.DataSources.SharePointSearch.SelectedPropertiesPlaceholderLabel,
                         onLoadOptions: this.getAvailableProperties.bind(this),
                         searchAsYouType: false,
+                        clearTextOnFocus: true,
                         defaultSelectedKeys: this.properties.selectedProperties,
                         onPropertyChange: this.onCustomPropertyUpdate.bind(this),
                         onUpdateOptions: ((options: IComboBoxOption[]) => {

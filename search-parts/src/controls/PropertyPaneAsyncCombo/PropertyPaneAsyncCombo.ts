@@ -39,6 +39,7 @@ export class PropertyPaneAsyncCombo implements IPropertyPaneField<IPropertyPaneA
             disabled: properties.disabled,
             stateKey: properties.stateKey,
             placeholder: properties.placeholder,
+            clearTextOnFocus: properties.clearTextOnFocus,
             onRender: this.onRender.bind(this),
             onDispose: this.onDispose.bind(this)
           };
@@ -75,6 +76,7 @@ export class PropertyPaneAsyncCombo implements IPropertyPaneField<IPropertyPaneA
                 description: this.properties.description,
                 disabled: this.properties.disabled,
                 placeholder: this.properties.placeholder,
+                clearTextOnFocus: this.properties.clearTextOnFocus,
                 searchAsYouType: this.properties.searchAsYouType,
                 onUpdate: ((value: any) => {
                     this.properties.onPropertyChange(this.targetProperty, value);

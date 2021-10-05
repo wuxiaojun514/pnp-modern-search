@@ -63,6 +63,11 @@ export interface IPropertyPaneAsyncComboProps {
     placeholder?: string;
 
     /**
+     * Flag indicating if the control should clear the text when the user focus the combobox
+     */
+    clearTextOnFocus?: boolean;    
+
+    /**
      * The method used to load options dynamically when menu opens (ex: async using an async call)
      * If you don't need to load data dynamically, just use the 'availableOptions' property
      * @param inputText an input text to narrow the initial query

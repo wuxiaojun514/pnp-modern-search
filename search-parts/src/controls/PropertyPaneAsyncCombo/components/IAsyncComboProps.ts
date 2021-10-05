@@ -89,4 +89,9 @@ export interface IAsyncComboProps {
      *
      */
     onGetErrorMessage?: (value: string) => string;
+
+    /**
+     * Flag indicating if the control should clear the text when the user focus the combobox
+     */
+    clearTextOnFocus?: boolean;
 }

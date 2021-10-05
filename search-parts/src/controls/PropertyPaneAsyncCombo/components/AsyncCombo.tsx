@@ -25,12 +25,15 @@ export class AsyncCombo extends React.Component<IAsyncComboProps, IAsyncComboSta
             selectedOptionKeys: [],
             options: [],
             textDisplayValue: null,
+            placeholder: props.placeholder
         };
 
         this.getOptions = this.getOptions.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onChangeMulti = this.onChangeMulti.bind(this);
         this.onRenderOption = this.onRenderOption.bind(this);
+        this._onClickOrFocusHandler = this._onClickOrFocusHandler.bind(this);
+        this._onBlurHandler = this._onBlurHandler.bind(this);
 
         this.searchInProgress = false;
     }
@@ -49,9 +52,12 @@ export class AsyncCombo extends React.Component<IAsyncComboProps, IAsyncComboSta
                     backgroundColor: 'inherit'
                 }
             },
+            onClick: this._onClickOrFocusHandler,
+            onFocus: this._onClickOrFocusHandler,
+            onBlur: this._onBlurHandler,
             useComboBoxAsMenuWidth: true,                
             options: this.state.options,
-            placeholder: this.props.placeholder, 
+            placeholder: this.state.placeholder, 
             onRenderOption: this.onRenderOption,
         };
 
@@ -409,4 +415,27 @@ export class AsyncCombo extends React.Component<IAsyncComboProps, IAsyncComboSta
             return 0;
         });
     }
+
+    private _onClickOrFocusHandler() {
+        if (this.props.clearTextOnFocus) {
+            this.setState({
+                textDisplayValue: null,
+                placeholder: this.props.allowFreeform ? 'Enter a new value and press Enter' : this.props.placeholder 
+            });
+        }
+    }
+
+    private _onBlurHandler() {
+
+        if (this.props.allowMultiSelect && this.state.selectedOptionKeys.length > 0) {
+            this.setState({
+                textDisplayValue: this.state.selectedOptionKeys.join(',')
+            });
+        } else {
+            this.setState({
+                textDisplayValue: this.getTextDisplayValue()
+            });
+        }
+    }
+
 }
